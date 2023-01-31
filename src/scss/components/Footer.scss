@@ -1,0 +1,135 @@
+@use '../base/' as b;
+
+footer {
+	background-color: var(--clr-p-500);
+	border-top: 3.75rem solid #fff;
+	padding-bottom: 2rem;
+
+	ul {
+		padding: 0;
+		margin-inline: auto;
+		width: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		list-style: none;
+		gap: 2rem;
+
+		li {
+			text-align: center;
+
+			a {
+				font-weight: 700;
+				font-size: 1.125rem;
+				text-decoration: none;
+				color: var(--clr-p-300);
+			}
+
+			&.logo-link {
+				width: 7.5rem;
+				height: 7.5rem;
+				display: grid;
+				place-content: center;
+				margin-inline: auto;
+				margin-top: -3.75rem;
+				background-color: var(--clr-p-100);
+			}
+
+			&.portfolio-link {
+				background-color: var(--clr-p-100);
+				margin-inline: auto;
+				padding-block: 1.563rem;
+				padding-inline: 2rem;
+
+				a {
+					display: flex;
+					align-items: center;
+					color: #fff;
+
+					svg {
+						margin-left: 1.5rem;
+						display: inline;
+						width: 1.5rem;
+					}
+				}
+			}
+		}
+	}
+	@include b.breakpoint(md) {
+		border-top: 0;
+		padding-bottom: 0;
+		position: relative;
+		overflow: hidden;
+
+		@include b.breakpoint(lg) {
+			background-color: transparent;
+		}
+
+		ul {
+			background-color: var(--clr-p-500);
+			z-index: 1;
+			position: relative;
+			flex-direction: row;
+			align-items: center;
+			width: clamp(46.875rem, 100%, 69.375rem);
+
+			li {
+				a {
+					transition: all var(--trans-dur);
+					outline: solid 2px hsla(224, 14%, 12%, 0);
+					outline-offset: 15px;
+
+					&:focus {
+						outline-offset: 25px;
+						outline: solid 2px hsla(224, 14%, 12%, 1);
+					}
+				}
+
+				&.logo-link {
+					margin-top: unset;
+					margin-inline: unset;
+					transition: all var(--trans-dur);
+					outline: solid 2px rgba(#fff, 0);
+
+					&:focus-within {
+						outline-offset: -15px;
+						outline: solid 2px rgba(#fff, 1);
+					}
+
+					@include b.breakpoint(lg) {
+						width: 12.5rem;
+						height: 12.5rem;
+					}
+				}
+
+				&.portfolio-link {
+					margin-inline: unset;
+					margin-left: auto;
+					position: relative;
+
+					&::after {
+						position: absolute;
+						content: '';
+						background-color: #fff;
+						width: 100em;
+						height: 300%;
+						top: 50%;
+						transform: translateY(-50%);
+						z-index: -1;
+					}
+
+					a {
+						transition: all var(--trans-dur);
+						outline: solid 2px rgba(#fff, 0);
+						outline-offset: 38px;
+
+						&:focus {
+							outline-offset: 11px;
+							outline: solid 2px rgba(#fff, 1);
+						}
+					}
+				}
+			}
+		}
+	}
+}

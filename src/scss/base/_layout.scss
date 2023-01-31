@@ -54,23 +54,32 @@ h6 {
 
 // Setup for responsive containers
 .content {
-	width: clamp(19.438rem, 60vw, 69.375rem);
+	width: clamp(19.438rem, 69.923vw, 69.375rem);
 	margin-inline: auto;
 	position: relative;
+
+	@include u.breakpoint(lg) {
+		width: clamp(46.875rem, 100%, 69.375rem);
+	}
 }
 
 // Page header position
 .page-header {
-	transform: rotate(90deg);
-	transform-origin: left center;
-	position: absolute;
-	top: 3.9rem;
-	left: -5.45rem;
-	color: var(--clr-p-400);
-	font-size: 1.125rem;
-	font-weight: 500;
-	letter-spacing: 1.125rem;
-	text-transform: uppercase;
+	display: none;
+
+	@include u.breakpoint(md) {
+		display: block;
+		transform: rotate(90deg);
+		transform-origin: left center;
+		position: absolute;
+		top: 3.9rem;
+		left: -5.45rem;
+		color: var(--clr-p-400);
+		font-size: 1.125rem;
+		font-weight: 500;
+		letter-spacing: 1.125rem;
+		text-transform: uppercase;
+	}
 
 	@include u.breakpoint(lg) {
 		top: -0.9rem;
