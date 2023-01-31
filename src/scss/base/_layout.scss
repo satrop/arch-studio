@@ -1,0 +1,60 @@
+@use './utils' as u;
+
+// Reset
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+* {
+	margin: 0;
+}
+html,
+body {
+	height: 100%;
+}
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+// Spacing to use between trays
+.flow {
+	> *:where(:not(:first-child)) {
+		margin-top: 1rem;
+
+		@include u.breakpoint(lg) {
+			margin-top: 2rem;
+		}
+	}
+}
+
+// Setup for responsive containers
+.content {
+	width: clamp(19.438rem, 60vw, 69.375rem);
+	margin-inline: auto;
+	position: relative;
+}

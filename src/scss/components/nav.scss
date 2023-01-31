@@ -1,0 +1,136 @@
+@use '../base/' as b;
+
+// Menu Button
+.menu-button {
+	width: 1.5rem;
+	height: 1.063rem;
+	position: relative;
+	padding: 0;
+	border: 0;
+	background-color: transparent;
+
+	span {
+		position: absolute;
+		transform: rotate(0deg);
+		width: 100%;
+		height: 0.188rem;
+		background-color: var(--clr-p-100);
+		opacity: 1;
+		left: 0;
+		transition: all var(--trans-dur);
+
+		&:nth-child(1) {
+			top: 0;
+		}
+
+		&:nth-child(2),
+		&:nth-child(3) {
+			top: 50%;
+			margin-top: -0.094rem;
+		}
+
+		&:nth-child(4) {
+			bottom: 0;
+		}
+	}
+
+	&.active {
+		span {
+			&:nth-child(1),
+			&:nth-child(4) {
+				top: 50%;
+				margin-top: -0.094rem;
+				width: 0;
+				left: 50%;
+			}
+
+			&:nth-child(2) {
+				transform: rotate(45deg);
+			}
+
+			&:nth-child(3) {
+				transform: rotate(-45deg);
+			}
+		}
+	}
+}
+
+// Fadeout
+.fade-out {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	pointer-events: none;
+	opacity: 0;
+	transition: all var(--trans-dur);
+
+	&.active {
+		pointer-events: auto;
+		opacity: 0.5;
+	}
+
+	@include b.breakpoint(lg) {
+		display: none;
+	}
+}
+
+.main-nav {
+	// Mobile nav buttons
+	.mobile-nav-buttons {
+		background-color: #fff;
+		position: relative;
+		z-index: 2;
+		padding-block: 2rem;
+
+		@include b.breakpoint(lg) {
+			display: none;
+		}
+	}
+
+	// Main nav - Mobile
+	.mobile-menu {
+		background-color: var(--clr-p-500);
+		padding: 2.438rem 3rem 2.625rem 3rem;
+		position: absolute;
+		z-index: 1;
+		width: 90%;
+		list-style: none;
+
+		> *:where(:not(:first-child)) {
+			margin-top: 1.063rem;
+		}
+
+		li {
+			a {
+				text-decoration: none;
+				color: var(--clr-p-100);
+				font-size: 2rem;
+				font-weight: 700;
+			}
+
+			&:first-of-type {
+				display: none;
+
+				@include b.breakpoint(lg) {
+					display: block;
+				}
+			}
+		}
+
+		@include b.breakpoint(lg) {
+			display: none;
+		}
+	}
+
+	// Desktop Menu
+	.desktop-menu {
+		display: none;
+
+		@include b.breakpoint(lg) {
+			display: block;
+		}
+	}
+}
