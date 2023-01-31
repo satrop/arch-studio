@@ -85,6 +85,22 @@
 		z-index: 2;
 		padding-block: 2rem;
 
+		@include b.breakpoint(md) {
+			.content {
+				position: relative;
+
+				&::before {
+					position: absolute;
+					content: '';
+					width: 1px;
+					height: 6.5rem;
+					background-color: var(--clr-p-400);
+					top: -2rem;
+					left: -5.375rem;
+				}
+			}
+		}
+
 		@include b.breakpoint(lg) {
 			display: none;
 		}
@@ -135,6 +151,17 @@
 			list-style: none;
 			gap: 3.75rem;
 			padding-block: 3.5rem;
+			position: relative;
+
+			&::before {
+				position: absolute;
+				content: '';
+				width: 1px;
+				height: 100%;
+				background-color: var(--clr-p-400);
+				top: -3.5rem;
+				left: -5.375rem;
+			}
 
 			li {
 				&:first-of-type {
