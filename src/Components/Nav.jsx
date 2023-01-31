@@ -44,7 +44,7 @@ const Nav = () => {
 			<div className="mobile-nav-buttons">
 				<div className="content flex space-between align-center">
 					<Link to="/" aria-label="Home">
-						<img src={logo} alt="Logo" aria-label="Main logo" />
+						<img src={logo} alt="Logo" />
 					</Link>
 					<button
 						onClick={() => (menuOpen ? close() : open())}
@@ -90,20 +90,20 @@ const Nav = () => {
 				)}
 			</AnimatePresence>
 			<div className="content">
-				<ul className="desktop-menu flex align-center">
+				<ul className="desktop-menu">
 					<li>
 						<Link to="/" aria-label="Home">
-							<img src={logo} alt="Logo" aria-label="Main logo" />
+							<img src={logo} alt="Logo" />
 						</Link>
+					</li>
+					<li>
+						<NavLink to="/portfolio">Portfolio</NavLink>
 					</li>
 					<li>
 						<NavLink to="/about">About</NavLink>
 					</li>
 					<li>
 						<NavLink to="/contact">Contact</NavLink>
-					</li>
-					<li>
-						<NavLink to="/portfolio">Portfolio</NavLink>
 					</li>
 				</ul>
 			</div>

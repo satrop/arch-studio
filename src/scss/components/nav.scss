@@ -130,7 +130,61 @@
 		display: none;
 
 		@include b.breakpoint(lg) {
-			display: block;
+			display: flex;
+			align-items: center;
+			list-style: none;
+			gap: 3.75rem;
+			padding-block: 3.5rem;
+
+			li {
+				&:first-of-type {
+					margin-right: 2.125rem;
+					transition: all var(--trans-dur);
+					outline: solid 2px hsla(224, 14%, 12%, 0);
+					outline-offset: 15px;
+
+					&:focus-within {
+						outline-offset: 25px;
+						outline: solid 2px hsla(224, 14%, 12%, 1);
+					}
+				}
+
+				a {
+					text-decoration: none;
+					line-height: 139%;
+					font-weight: 700;
+					font-size: 1.125rem;
+					color: var(--clr-p-300);
+					position: relative;
+					transition: all var(--trans-dur);
+					outline: solid 2px hsla(224, 14%, 12%, 0);
+					outline-offset: 15px;
+
+					&.active {
+						color: var(--clr-p-100);
+
+						&::after {
+							position: absolute;
+							content: '';
+							width: 70%;
+							height: 1px;
+							background-color: var(--clr-p-100);
+							left: 50%;
+							transform: translateX(-50%);
+							bottom: -10px;
+						}
+					}
+
+					&:hover {
+						color: var(--clr-p-100);
+					}
+
+					&:focus {
+						outline-offset: 25px;
+						outline: solid 2px hsla(224, 14%, 12%, 1);
+					}
+				}
+			}
 		}
 	}
 }
