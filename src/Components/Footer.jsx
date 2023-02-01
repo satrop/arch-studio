@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import Button from '../Components/Button';
+
 const Footer = () => {
 	return (
 		<footer>
@@ -44,19 +46,11 @@ const Footer = () => {
 					<Link to="/contact">Contact</Link>
 				</li>
 				<li className="portfolio-link">
-					<Link to="/portfolio">
-						See Our Portfolio
-						<svg
-							viewBox="0 0 24 20"
-							fill="none">
-							<path
-								d="M15 1L24 10L15 19"
-								stroke="white"
-								strokeWidth="2"
-							/>
-							<path d="M0 10H24" stroke="white" strokeWidth="2" />
-						</svg>
-					</Link>
+					<Button
+						goto="/portfolio"
+						children="See Our Portfolio"
+						classMod=""
+					/>
 				</li>
 			</ul>
 		</footer>

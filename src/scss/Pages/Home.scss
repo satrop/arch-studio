@@ -1,0 +1,59 @@
+@use '../base/' as b;
+
+.mobile-hero {
+	display: grid;
+	grid-template-areas: 'container';
+
+	&__image,
+	&__content {
+		grid-area: container;
+	}
+
+	&__image {
+		img {
+			max-width: unset;
+			object-fit: cover;
+			object-position: center;
+			width: 100%;
+			max-height: 560px;
+
+			@include b.breakpoint(md) {
+				max-height: 720px;
+			}
+		}
+	}
+
+	&__content {
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		color: #fff;
+		position: relative;
+
+		.heading {
+			margin-bottom: 0.688rem;
+		}
+
+		.button {
+			margin-top: 5.188rem;
+
+			@include b.breakpoint(md) {
+				margin-top: 2.563rem;
+			}
+		}
+
+		@include b.breakpoint(md) {
+			padding: 6rem;
+		}
+	}
+
+	@include b.breakpoint(md) {
+		margin-inline: auto;
+		width: var(--clamp);
+	}
+
+	@include b.breakpoint(lg) {
+		display: none;
+	}
+}

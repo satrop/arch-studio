@@ -53,14 +53,14 @@ h6 {
 }
 
 // Setup for responsive containers
+:root {
+	--clamp: clamp(19.438rem, 74.61vw, 69.375rem);
+}
+
 .content {
-	width: clamp(19.438rem, 69.923vw, 69.375rem);
+	width: var(--clamp);
 	margin-inline: auto;
 	position: relative;
-
-	@include u.breakpoint(lg) {
-		width: clamp(46.875rem, 100%, 69.375rem);
-	}
 }
 
 // Page header position
@@ -73,7 +73,7 @@ h6 {
 		transform-origin: left center;
 		position: absolute;
 		top: 3.9rem;
-		left: -5.45rem;
+		left: -3.188rem;
 		color: var(--clr-p-400);
 		font-size: 1.125rem;
 		font-weight: 500;
@@ -83,5 +83,6 @@ h6 {
 
 	@include u.breakpoint(lg) {
 		top: -0.9rem;
+		left: -5.488rem;
 	}
 }

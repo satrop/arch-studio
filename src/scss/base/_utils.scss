@@ -28,3 +28,10 @@ $breakpoints: (
 .space-between {
 	justify-content: space-between;
 }
+
+// Image shade
+.image-shade {
+	img {
+		filter: brightness(85%);
+	}
+}

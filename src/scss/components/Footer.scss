@@ -38,20 +38,6 @@ footer {
 			&.portfolio-link {
 				background-color: var(--clr-p-100);
 				margin-inline: auto;
-				padding-block: 1.563rem;
-				padding-inline: 2rem;
-
-				a {
-					display: flex;
-					align-items: center;
-					color: #fff;
-
-					svg {
-						margin-left: 1.5rem;
-						display: inline;
-						width: 1.5rem;
-					}
-				}
 			}
 		}
 	}
@@ -116,17 +102,6 @@ footer {
 						top: 50%;
 						transform: translateY(-50%);
 						z-index: -1;
-					}
-
-					a {
-						transition: all var(--trans-dur);
-						outline: solid 2px rgba(#fff, 0);
-						outline-offset: 38px;
-
-						&:focus {
-							outline-offset: 11px;
-							outline: solid 2px rgba(#fff, 1);
-						}
 					}
 				}
 			}

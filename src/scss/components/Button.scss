@@ -1,0 +1,31 @@
+.button {
+	background-color: var(--clr-p-100);
+	padding-block: 1.563rem;
+	padding-inline: 2rem;
+	display: flex;
+	align-items: center;
+	color: #fff;
+	transition: all var(--trans-dur);
+	outline: solid 2px rgba(#fff, 0);
+	outline-offset: 38px;
+	font-weight: 700;
+	font-size: 1.125rem;
+	text-decoration: none;
+	align-self: flex-start;
+	z-index: 2;
+
+	svg {
+		margin-left: 1.5rem;
+		display: inline;
+		width: 1.5rem;
+	}
+
+	&:focus {
+		outline-offset: 11px;
+		outline: solid 2px rgba(#fff, 1);
+	}
+
+	&:hover {
+		background-color: var(--clr-p-200);
+	}
+}
