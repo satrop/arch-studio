@@ -2,14 +2,9 @@ import { Link, NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
-import logo from '/public/assets/home/desktop/logo.svg';
+import logo from '/public/logo.svg';
 
 const Nav = () => {
-	// const handleClick = () => {
-	// 	setActive((prevActive) => !prevActive);
-	// 	setIsPressed(!isPressed);
-	// };
-
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [isPressed, setIsPressed] = useState(false);
 	const [isActive, setIsActive] = useState(false);
