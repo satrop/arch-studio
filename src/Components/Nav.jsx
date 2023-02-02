@@ -2,7 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
-import logo from '/img/logo.svg';
+import logo from '/public/logo.svg';
 
 const Nav = () => {
 	// const handleClick = () => {
