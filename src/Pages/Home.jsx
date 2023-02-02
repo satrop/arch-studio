@@ -1,5 +1,5 @@
 import Button from '../Components/Button';
-import hero from '/public/assets/home/mobile/image-hero-paramour.jpg';
+import hero from '/assets/home/mobile/image-hero-paramour.jpg';
 
 import Swiper from '../Components/Swiper';
 
