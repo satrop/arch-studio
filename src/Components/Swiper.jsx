@@ -26,7 +26,7 @@ export default () => {
 				</div>
 				<div className="hero-content">
 					<div
-						className="heading heading--lg"
+						className="heading heading--lg white"
 						data-swiper-parallax-duration="800"
 						data-swiper-parallax-opacity="0"
 						data-swiper-parallax="-700">

@@ -3,6 +3,7 @@
 .mobile-hero {
 	display: grid;
 	grid-template-areas: 'container';
+	margin-bottom: 4.5rem;
 
 	&__image,
 	&__content {
@@ -63,5 +64,88 @@
 
 	@include b.breakpoint(lg) {
 		display: block;
+	}
+}
+
+.home {
+	.body-text {
+		img {
+			display: none;
+		}
+
+		@include b.breakpoint(md) {
+			padding-top: 0;
+			margin-bottom: 14.563rem;
+
+			&::before {
+				display: none;
+			}
+
+			.heading--md {
+				margin-top: -4.4rem;
+			}
+		}
+
+		@include b.breakpoint(lg) {
+			margin-top: 6.75rem;
+			display: grid;
+			grid-template-areas:
+				'header header header img'
+				'body body . img';
+
+			.heading--xl {
+				grid-area: header;
+			}
+
+			.body {
+				grid-area: body;
+				max-width: 27.875rem;
+				margin-left: 11.813rem;
+			}
+
+			img {
+				grid-area: img;
+				grid-column: 3 / span 2;
+				margin-top: 5.438rem;
+				display: block;
+				margin-left: auto;
+			}
+		}
+	}
+}
+
+.cta-lg {
+	display: grid;
+	grid-template-areas: 'cta';
+	margin-bottom: 4.563rem;
+
+	.cta-img {
+		grid-area: cta;
+
+		img {
+			object-fit: cover;
+			object-position: center;
+			height: 35rem;
+		}
+	}
+
+	.cta-body {
+		grid-area: cta;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 80%;
+		margin-inline: auto;
+
+		.button {
+			margin-top: 1.438rem;
+		}
+	}
+
+	@include b.breakpoint(md) {
+		width: var(--clamp);
+		margin-inline: auto;
+		margin-bottom: 12.5rem;
 	}
 }
