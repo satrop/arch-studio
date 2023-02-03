@@ -15,6 +15,7 @@ import 'swiper/css';
 import '../scss/Pages/Home.scss';
 
 const Home = () => {
+	// Class name to body tag for future SCSS hooks
 	useEffect(() => {
 		document.body.classList.add('home');
 		return () => {
@@ -22,6 +23,7 @@ const Home = () => {
 		};
 	}, []);
 
+	// Animation for the large CTA
 	const ctaItem = {
 		offscreen: {
 			y: 100,
@@ -37,6 +39,7 @@ const Home = () => {
 		},
 	};
 
+	// Animation for the featured items
 	const featuredContainerItem = {
 		offscreen: {
 			y: 100,
@@ -52,7 +55,9 @@ const Home = () => {
 		},
 	};
 
+	// Map over the portfolio items, pulling in just 3
 	const portfolioItems = portfolioData.portfolio.slice(0, 3).map((item) => {
+		// Map over the image sizes per item to load for viewports
 		const itemImage = item.portfolioImages.map((image, idx) => {
 			return (
 				<picture
@@ -68,6 +73,7 @@ const Home = () => {
 			);
 		});
 
+		// Return the item as an DOM element that pulls in the itemImage from above
 		return (
 			<motion.div
 				key={item.id}
@@ -197,7 +203,7 @@ const Home = () => {
 					{portfolioItems}
 				</motion.div>
 				<Button
-					goto="/portfolio"
+					to="/portfolio"
 					children="See Our Portfolio"
 					classMod=""
 				/>

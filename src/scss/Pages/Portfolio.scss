@@ -1,0 +1,17 @@
+@use '../base/' as b;
+
+.portfolio {
+	.portfolio-section .portfolio-items {
+		display: grid;
+		gap: 1.5rem;
+		grid-template-columns: 1fr;
+
+		@include b.breakpoint(md) {
+		}
+
+		@include b.breakpoint(lg) {
+			gap: 1.875rem;
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+}

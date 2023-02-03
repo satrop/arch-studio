@@ -36,7 +36,7 @@ export default () => {
 						<Button
 							goto="/portfolio"
 							children="See Our Portfolio"
-							classMod=""
+							classMod="333"
 						/>
 					</span>
 				</div>

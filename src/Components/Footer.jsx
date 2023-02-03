@@ -47,7 +47,7 @@ const Footer = () => {
 				</li>
 				<li className="portfolio-link">
 					<Button
-						goto="/portfolio"
+						goto="portfolio"
 						children="See Our Portfolio"
 						classMod=""
 					/>
