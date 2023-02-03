@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { useAnimation, motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 
 import Button from '../Components/Button';
 
@@ -23,23 +22,31 @@ const Home = () => {
 		};
 	}, []);
 
-	const controls = useAnimation();
-	const [ref, inView] = useInView();
-	useEffect(() => {
-		if (inView) {
-			controls.start('visible');
-		}
-	}, [controls, inView]);
-
-	const ctaVars = {
-		hidden: {
+	const ctaItem = {
+		offscreen: {
+			y: 100,
 			opacity: 0,
-			y: 30,
 		},
-		visible: {
-			opacity: 1,
+		onscreen: {
 			y: 0,
+			opacity: 1,
 			transition: {
+				ease: 'easeInOut',
+				duration: 1,
+			},
+		},
+	};
+
+	const featuredContainerItem = {
+		offscreen: {
+			y: 100,
+			opacity: 0,
+		},
+		onscreen: {
+			y: 0,
+			opacity: 1,
+			transition: {
+				ease: 'easeInOut',
 				duration: 1,
 			},
 		},
@@ -62,7 +69,10 @@ const Home = () => {
 		});
 
 		return (
-			<div key={item.id} className="portfolio-item">
+			<motion.div
+				key={item.id}
+				variants={featuredContainerItem}
+				className="portfolio-item">
 				<div className="text-block">
 					<div className="heading heading--sm white">
 						{item.header}
@@ -71,7 +81,7 @@ const Home = () => {
 					<div className="number">{item.id}</div>
 				</div>
 				{itemImage}
-			</div>
+			</motion.div>
 		);
 	});
 
@@ -117,11 +127,7 @@ const Home = () => {
 				<motion.img
 					initial={{ opacity: 0, x: 50 }}
 					animate={{ opacity: 1, x: 0 }}
-					transition={{
-						ease: 'easeInOut',
-						duration: 1,
-						delay: 1,
-					}}
+					transition={{ ease: 'easeInOut', duration: 1, delay: 1 }}
 					src={desktopBodyImg}
 					alt=""
 					role="presentation"
@@ -140,11 +146,7 @@ const Home = () => {
 				<motion.div
 					initial={{ opacity: 0, y: 50 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{
-						ease: 'easeInOut',
-						duration: 1,
-						delay: 1.25,
-					}}
+					transition={{ ease: 'easeInOut', duration: 1, delay: 1.25 }}
 					className="body">
 					<div className="heading heading--md">
 						Welcome to Arch Studio
@@ -169,10 +171,10 @@ const Home = () => {
 				</motion.div>
 			</section>
 			<motion.section
-				ref={ref}
-				animate={controls}
-				initial="hidden"
-				variants={ctaVars}
+				variants={ctaItem}
+				initial="offscreen"
+				whileInView="onscreen"
+				viewport={{ once: true }}
 				className="cta-lg">
 				<div className="cta-img image-shade">
 					<img src={ctaImg} alt="" role="presentation" />
@@ -184,15 +186,22 @@ const Home = () => {
 					<Button goto="/about" children="About Us" classMod="" />
 				</div>
 			</motion.section>
-			<motion.section className="content portfolio-section">
+			<section className="content portfolio-section">
 				<div className="heading heading--md">Featured</div>
-				<div className="portfolio-items">{portfolioItems}</div>
+				<motion.div
+					className="portfolio-items"
+					initial="offscreen"
+					whileInView="onscreen"
+					viewport={{ once: true }}
+					transition={{ delayChildren: 0.3, staggerChildren: 0.3 }}>
+					{portfolioItems}
+				</motion.div>
 				<Button
 					goto="/portfolio"
 					children="See Our Portfolio"
 					classMod=""
 				/>
-			</motion.section>
+			</section>
 		</>
 	);
 };
