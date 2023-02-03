@@ -34,6 +34,25 @@ const Nav = () => {
 		},
 	};
 
+	const container = {
+		hidden: { opacity: 1 },
+		visible: {
+			opacity: 1,
+			transition: {
+				delayChildren: 0.3,
+				staggerChildren: 0.2,
+			},
+		},
+	};
+
+	const item = {
+		hidden: { y: 20, opacity: 0 },
+		visible: {
+			y: 0,
+			opacity: 1,
+		},
+	};
+
 	return (
 		<nav className="main-nav">
 			<div className="mobile-nav-buttons">
@@ -84,24 +103,28 @@ const Nav = () => {
 					</motion.ul>
 				)}
 			</AnimatePresence>
-			<div className="content">
-				<ul className="desktop-menu">
+			<motion.div className="content">
+				<motion.ul
+					variants={container}
+					initial="hidden"
+					animate="visible"
+					className="desktop-menu">
 					<li>
 						<Link to="/" aria-label="Home">
 							<img src={logo} alt="Logo" />
 						</Link>
 					</li>
-					<li>
+					<motion.li variants={item}>
 						<NavLink to="/portfolio">Portfolio</NavLink>
-					</li>
-					<li>
+					</motion.li>
+					<motion.li variants={item}>
 						<NavLink to="/about">About</NavLink>
-					</li>
-					<li>
+					</motion.li>
+					<motion.li variants={item}>
 						<NavLink to="/contact">Contact</NavLink>
-					</li>
-				</ul>
-			</div>
+					</motion.li>
+				</motion.ul>
+			</motion.div>
 		</nav>
 	);
 };

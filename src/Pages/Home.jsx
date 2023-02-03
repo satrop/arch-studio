@@ -1,4 +1,7 @@
 import { useEffect } from 'react';
+import { useAnimation, motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+
 import Button from '../Components/Button';
 
 import hero from '/assets/home/mobile/image-hero-paramour.jpg';
@@ -17,16 +20,53 @@ const Home = () => {
 			document.body.classList.remove('home');
 		};
 	}, []);
+
+	const ctaVars = {
+		hidden: {
+			opacity: 0,
+			y: 30,
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: 1,
+			},
+		},
+	};
+
+	const controls = useAnimation();
+	const [ref, inView] = useInView();
+	useEffect(() => {
+		if (inView) {
+			controls.start('visible');
+		}
+	}, [controls, inView]);
+
 	return (
 		<>
 			<div className="content">
 				<h1 className="page-header">Home</h1>
 			</div>
 			<div className="mobile-hero">
-				<div className="mobile-hero__image image-shade">
+				<motion.div
+					initial={{ opacity: 0, x: 25 }}
+					animate={{ opacity: 1, x: 0 }}
+					transition={{
+						ease: 'easeInOut',
+						duration: 1,
+					}}
+					className="mobile-hero__image image-shade">
 					<img src={hero} alt="Home page hero image" />
-				</div>
-				<div className="mobile-hero__content">
+				</motion.div>
+				<motion.div
+					initial={{ opacity: 0, y: -25 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{
+						ease: 'easeInOut',
+						duration: 1.5,
+					}}
+					className="mobile-hero__content">
 					<div className="heading heading--lg white">
 						Project Paramour
 					</div>
@@ -36,15 +76,44 @@ const Home = () => {
 						architecture.
 					</p>
 					<Button goto="/" children="See Our Portfolio" classMod="" />
-				</div>
+				</motion.div>
 			</div>
 			<div className="desktop-hero">
 				<Swiper />
 			</div>
 			<section className="content body-text">
-				<img src={desktopBodyImg} alt="" role="presentation" />
-				<div className="heading heading--xl">Welcome</div>
-				<div className="body">
+				<motion.img
+					initial={{ opacity: 0, x: 50 }}
+					animate={{ opacity: 1, x: 0 }}
+					transition={{
+						ease: 'easeInOut',
+						duration: 1,
+						delay: 1,
+					}}
+					src={desktopBodyImg}
+					alt=""
+					role="presentation"
+				/>
+				<motion.div
+					initial={{ opacity: 0, x: -50 }}
+					animate={{ opacity: 1, x: 0 }}
+					transition={{
+						ease: 'easeInOut',
+						duration: 1,
+						delay: 1.5,
+					}}
+					className="heading heading--xl wrapping">
+					Welcome
+				</motion.div>
+				<motion.div
+					initial={{ opacity: 0, y: 50 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{
+						ease: 'easeInOut',
+						duration: 1,
+						delay: 1.25,
+					}}
+					className="body">
 					<div className="heading heading--md">
 						Welcome to Arch Studio
 					</div>
@@ -65,9 +134,14 @@ const Home = () => {
 						in harmony the surrounding area to create truly stunning
 						projects that will stand the test of time.
 					</p>
-				</div>
+				</motion.div>
 			</section>
-			<section className="cta-lg">
+			<motion.section
+				ref={ref}
+				animate={controls}
+				initial="hidden"
+				variants={ctaVars}
+				className="cta-lg">
 				<div className="cta-img image-shade">
 					<img src={ctaImg} alt="" role="presentation" />
 				</div>
@@ -77,7 +151,7 @@ const Home = () => {
 					</div>
 					<Button goto="/about" children="About Us" classMod="" />
 				</div>
-			</section>
+			</motion.section>
 		</>
 	);
 };

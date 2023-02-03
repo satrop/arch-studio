@@ -1,21 +1,12 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, A11y, Parallax, EffectFade } from 'swiper';
+import { motion } from 'framer-motion';
 
 import data from '/src/assets/home-slider.json';
 import Button from '../Components/Button';
 // import 'swiper/css';
 
 export default () => {
-	const pagination = {
-		clickable: true,
-		el: '.home-pagination',
-		renderBullet: function (index, className) {
-			return (
-				'<span class="' + className + '">0' + (index + 1) + '</span>'
-			);
-		},
-	};
-
 	const swiperList = data.homeSlider.map((item, i) => {
 		return (
 			<SwiperSlide key={i}>
@@ -53,8 +44,26 @@ export default () => {
 		);
 	});
 
+	const pagination = {
+		clickable: true,
+		el: '.home-pagination',
+		renderBullet: function (index, className) {
+			return (
+				'<span class="' + className + '">0' + (index + 1) + '</span>'
+			);
+		},
+	};
+
 	return (
-		<div className="content">
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{
+				ease: 'easeInOut',
+				duration: 1,
+				delay: 0.5,
+			}}
+			className="content">
 			<Swiper
 				modules={[Pagination, A11y, Parallax, EffectFade]}
 				slidesPerView={1}
@@ -67,7 +76,15 @@ export default () => {
 				className="homepage-swiper">
 				{swiperList}
 			</Swiper>
-			<div className="home-pagination"></div>
-		</div>
+			<motion.div
+				initial={{ opacity: 0, x: -50 }}
+				animate={{ opacity: 1, x: 0 }}
+				transition={{
+					ease: 'easeInOut',
+					duration: 1,
+					delay: 1,
+				}}
+				className="home-pagination"></motion.div>
+		</motion.div>
 	);
 };
