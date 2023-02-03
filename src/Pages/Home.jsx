@@ -10,6 +10,8 @@ import ctaImg from '/assets/home/desktop/image-small-team.jpg';
 
 import Swiper from '../Components/Swiper';
 
+import portfolioData from '../assets/home-slider.json';
+
 import 'swiper/css';
 import '../scss/Pages/Home.scss';
 
@@ -20,6 +22,14 @@ const Home = () => {
 			document.body.classList.remove('home');
 		};
 	}, []);
+
+	const controls = useAnimation();
+	const [ref, inView] = useInView();
+	useEffect(() => {
+		if (inView) {
+			controls.start('visible');
+		}
+	}, [controls, inView]);
 
 	const ctaVars = {
 		hidden: {
@@ -35,13 +45,35 @@ const Home = () => {
 		},
 	};
 
-	const controls = useAnimation();
-	const [ref, inView] = useInView();
-	useEffect(() => {
-		if (inView) {
-			controls.start('visible');
-		}
-	}, [controls, inView]);
+	const portfolioItems = portfolioData.portfolio.slice(0, 3).map((item) => {
+		const itemImage = item.portfolioImages.map((image, idx) => {
+			return (
+				<picture
+					key={idx}
+					className="portfolio-item__image image-gradient">
+					<source
+						srcSet={image.desktop}
+						media="(min-width:  90rem)"
+					/>
+					<source srcSet={image.tablet} media="(min-width:  48rem)" />
+					<img className="border-radius" src={image.mobile} alt="" />
+				</picture>
+			);
+		});
+
+		return (
+			<div key={item.id} className="portfolio-item">
+				<div className="text-block">
+					<div className="heading heading--sm white">
+						{item.header}
+					</div>
+					<div className="date white">{item.date}</div>
+					<div className="number">{item.id}</div>
+				</div>
+				{itemImage}
+			</div>
+		);
+	});
 
 	return (
 		<>
@@ -151,6 +183,15 @@ const Home = () => {
 					</div>
 					<Button goto="/about" children="About Us" classMod="" />
 				</div>
+			</motion.section>
+			<motion.section className="content portfolio-section">
+				<div className="heading heading--md">Featured</div>
+				<div className="portfolio-items">{portfolioItems}</div>
+				<Button
+					goto="/portfolio"
+					children="See Our Portfolio"
+					classMod=""
+				/>
 			</motion.section>
 		</>
 	);
