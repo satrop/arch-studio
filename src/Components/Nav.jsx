@@ -92,13 +92,25 @@ const Nav = () => {
 							</Link>
 						</li>
 						<li>
-							<NavLink to="/about">About</NavLink>
+							<NavLink
+								to="/about"
+								onClick={() => (menuOpen ? close() : open())}>
+								About
+							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/contact">Contact</NavLink>
+							<NavLink
+								to="/contact"
+								onClick={() => (menuOpen ? close() : open())}>
+								Contact
+							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/portfolio">Portfolio</NavLink>
+							<NavLink
+								to="/portfolio"
+								onClick={() => (menuOpen ? close() : open())}>
+								Portfolio
+							</NavLink>
 						</li>
 					</motion.ul>
 				)}

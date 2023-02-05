@@ -1,0 +1,83 @@
+@use '../base/' as b;
+
+.page-info {
+	&__image {
+		display: none;
+	}
+
+	.heading {
+		margin-bottom: 1.25rem;
+	}
+}
+
+.leaders {
+	.heading {
+		margin-bottom: 3.438rem;
+	}
+
+	.cards-wrapper {
+		margin-inline: auto;
+
+		.card {
+			margin-bottom: 4.938rem;
+
+			img {
+				margin-bottom: 1rem;
+				width: 100%;
+			}
+
+			.heading--sm {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	@include b.breakpoint(md) {
+		.cards-wrapper {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			column-gap: 1.875rem;
+			row-gap: 3.938rem;
+			margin-bottom: 0;
+		}
+	}
+
+	@include b.breakpoint(lg) {
+		display: grid;
+		grid-template-columns: 34% 1fr;
+		margin-bottom: 12.5rem;
+	}
+}
+
+.card__img {
+	display: grid;
+	grid-template-areas: 'content';
+	place-items: center;
+
+	img,
+	.social-links {
+		grid-area: content;
+		z-index: 1;
+		transition: all var(--trans-dur);
+	}
+
+	.social-links {
+		display: flex;
+		align-items: center;
+		gap: 6rem;
+		opacity: 0;
+		position: relative;
+		z-index: 2;
+	}
+
+	&:hover {
+		.social-links {
+			gap: 2rem;
+			opacity: 1;
+		}
+
+		img {
+			filter: brightness(0.5);
+		}
+	}
+}

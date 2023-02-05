@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-import portfolioData from '../assets/home-slider.json';
+import portfolioData from '../assets/data.json';
 
 import '../scss/Pages/Portfolio.scss';
 

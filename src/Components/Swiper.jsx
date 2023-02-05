@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, A11y, Parallax, EffectFade } from 'swiper';
 import { motion } from 'framer-motion';
 
-import data from '/src/assets/home-slider.json';
+import data from '/src/assets/data.json';
 import Button from '../Components/Button';
 // import 'swiper/css';
 

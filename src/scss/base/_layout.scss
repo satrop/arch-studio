@@ -86,3 +86,33 @@ h6 {
 		left: -5.488rem;
 	}
 }
+
+// Page body text block
+.body-text {
+	img {
+		display: none;
+	}
+
+	@include u.breakpoint(md) {
+		padding-top: 0;
+		margin-bottom: 14.563rem;
+	}
+
+	@include u.breakpoint(lg) {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas: 'text-block image';
+		margin-bottom: 12.5rem;
+
+		.body {
+			grid-area: text-block;
+			padding-right: 7.75rem;
+		}
+
+		img {
+			grid-area: image;
+			display: block;
+			margin-left: auto;
+		}
+	}
+}

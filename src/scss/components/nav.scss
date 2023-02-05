@@ -66,6 +66,7 @@
 	pointer-events: none;
 	opacity: 0;
 	transition: all var(--trans-dur);
+	z-index: 2;
 
 	&.active {
 		pointer-events: auto;
@@ -82,7 +83,7 @@
 	.mobile-nav-buttons {
 		background-color: #fff;
 		position: relative;
-		z-index: 2;
+		z-index: 4;
 		padding-block: 2rem;
 
 		@include b.breakpoint(md) {
@@ -111,7 +112,7 @@
 		background-color: var(--clr-p-500);
 		padding: 2.438rem 3rem 2.625rem 3rem;
 		position: absolute;
-		z-index: 1;
+		z-index: 3;
 		width: 90%;
 		list-style: none;
 

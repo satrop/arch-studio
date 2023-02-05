@@ -9,7 +9,7 @@ import ctaImg from '/assets/home/desktop/image-small-team.jpg';
 
 import Swiper from '../Components/Swiper';
 
-import portfolioData from '../assets/home-slider.json';
+import portfolioData from '../assets/data.json';
 
 import 'swiper/css';
 import '../scss/Pages/Home.scss';
