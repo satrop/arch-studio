@@ -92,7 +92,7 @@ const Home = () => {
 	});
 
 	return (
-		<>
+		<main>
 			<div className="content">
 				<h1 className="page-header">Home</h1>
 			</div>
@@ -208,7 +208,7 @@ const Home = () => {
 					classMod=""
 				/>
 			</section>
-		</>
+		</main>
 	);
 };
 

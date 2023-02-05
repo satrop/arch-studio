@@ -205,18 +205,20 @@
 			transform: translateY(-50%);
 		}
 
-		.portfolio-items {
-			display: flex;
-			justify-content: space-between;
+		@include b.breakpoint(lg) {
+			.portfolio-items {
+				display: flex;
+				justify-content: space-between;
 
-			.portfolio-item {
-				margin-top: 0;
-				overflow: hidden;
+				.portfolio-item {
+					margin-top: 0;
+					overflow: hidden;
 
-				.number {
-					top: 2rem;
-					right: -1rem;
-					transform: none;
+					.number {
+						top: 2rem;
+						right: -1rem;
+						transform: none;
+					}
 				}
 			}
 		}

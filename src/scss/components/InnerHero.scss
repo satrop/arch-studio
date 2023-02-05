@@ -1,0 +1,118 @@
+@use '../base/' as b;
+
+.inner-hero {
+	position: relative;
+	margin-bottom: 4.813rem;
+
+	picture {
+		img {
+			width: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+
+	.text-block {
+		background-color: #fff;
+		border-top: 2.813rem solid #fff;
+		margin-top: -2.813rem;
+		position: relative;
+		margin-bottom: 4.813rem;
+
+		&::before {
+			position: absolute;
+			content: '';
+			width: 10em;
+			left: -10em;
+			top: -2.813rem;
+			height: calc(100% + 2.813rem);
+			background-color: #fff;
+		}
+
+		.heading--md {
+			margin-bottom: 1.25rem;
+		}
+	}
+
+	@include b.breakpoint(md) {
+		display: grid;
+		grid-template-areas: 'content';
+		width: var(--clamp);
+		margin-inline: auto;
+		// overflow: hidden;
+		margin-bottom: 12.5rem;
+
+		picture,
+		.text-block {
+			grid-area: content;
+		}
+
+		.text-block {
+			width: 89.706%;
+			padding-left: 3.688rem;
+			align-self: end;
+			justify-self: end;
+			border-top: 0;
+			margin: unset;
+
+			&::before {
+				display: none;
+			}
+
+			.heading--xl {
+				margin-top: -5.5rem;
+				text-align: right;
+			}
+
+			.heading--md {
+				padding-top: 4.563rem;
+				position: relative;
+
+				&::before {
+					position: absolute;
+					top: 0;
+					left: 0;
+					content: '';
+					width: 4.063rem;
+					height: 1px;
+					background-color: var(--clr-p-400);
+				}
+			}
+		}
+	}
+
+	@include b.breakpoint(lg) {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas: 'image text';
+
+		picture {
+			grid-area: image;
+		}
+
+		.text-block {
+			margin-inline: unset;
+			grid-area: text;
+			width: unset;
+			margin-left: -9.375rem;
+            padding-top: 3rem;
+
+			.heading--xl {
+				margin-top: -8rem;
+				text-align: left;
+			}
+
+			.heading--md,
+			.text {
+				padding-left: 12.5rem;
+			}
+
+			.heading--md {
+				&::before {
+                    top: 15px;
+					left: 12.5rem;
+				}
+			}
+		}
+	}
+}
