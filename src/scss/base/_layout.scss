@@ -61,6 +61,14 @@ h6 {
 	width: var(--clamp);
 	margin-inline: auto;
 	position: relative;
+
+	&.break-out {
+		width: 100%;
+
+		@include u.breakpoint(md) {
+			width: var(--clamp);
+		}
+	}
 }
 
 // Page header position
@@ -115,4 +123,9 @@ h6 {
 			margin-left: auto;
 		}
 	}
+}
+
+.leaflet-container {
+	width: 100wh;
+	height: 35rem;
 }

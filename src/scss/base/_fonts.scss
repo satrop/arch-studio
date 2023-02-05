@@ -46,7 +46,7 @@ section {
 		@include u.breakpoint(md) {
 			display: block;
 			color: var(--clr-p-500);
-			font-size: 7.5rem; // 120px
+			font-size: 9.5rem; // 120px
 			line-height: 12.5rem; // 200px
 			letter-spacing: -0.188rem; // -3px
 		}
@@ -96,8 +96,33 @@ section {
 	&--sm {
 		font-size: 2rem; // 32px
 	}
+
+	&--xs {
+		color: var(--clr-p-200);
+	}
 }
 
 .white {
 	color: #fff;
+}
+
+address {
+	font-style: normal;
+
+	a {
+		color: var(--clr-p-200);
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	+ address {
+		margin-top: 2rem;
+
+		@include u.breakpoint(md) {
+			margin-top: 0;
+		}
+	}
 }

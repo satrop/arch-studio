@@ -1,0 +1,36 @@
+@use '../base/' as b;
+
+.leaflet-container {
+	margin-top: 4.438rem;
+	margin-bottom: 12.5rem;
+
+	@include b.breakpoint(md) {
+		margin-top: 0;
+	}
+}
+
+.contact {
+	.body .addresses {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.body-text {
+		display: block;
+		.body {
+			padding-right: 0;
+		}
+	}
+
+	@include b.breakpoint(lg) {
+		.body {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-areas: 'header address address';
+
+			.addresses {
+				grid-area: address;
+			}
+		}
+	}
+}
