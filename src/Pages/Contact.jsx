@@ -1,6 +1,7 @@
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 
 import InnerHero from '../Components/InnerHero';
 
@@ -49,6 +50,22 @@ const Contact = () => {
 		},
 	};
 
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
+	const handleRegistration = (data) => console.log(data);
+	const handleError = (errors) => {};
+
+	let message = "Can't be empty";
+
+	const registerOptions = {
+		name: { required: `${message}` },
+		email: { required: `${message}` },
+		message: { required: `${message}` },
+	};
+
 	return (
 		<main>
 			<div className="content">
@@ -74,9 +91,9 @@ const Contact = () => {
 				/>
 			</section>
 
-			<section className="content body-text">
+			<section className="content contact-details upper-line spacers">
 				<motion.div
-					className="body"
+					className="grid two-col split--40"
 					initial={{ opacity: 0, y: 155 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{
@@ -84,11 +101,13 @@ const Contact = () => {
 						duration: 1,
 						delay: 1.5,
 					}}>
-					<div className="heading heading--md">
-						Contact <br />
-						Details
+					<div className="col col-1">
+						<div className="heading heading--md">
+							Contact <br />
+							Details
+						</div>
 					</div>
-					<div className="addresses">
+					<div className="col col-2 flex space-between">
 						<address>
 							<div className="heading heading--xs">
 								Main Office
@@ -118,7 +137,7 @@ const Contact = () => {
 			</section>
 
 			<motion.section
-				className="content"
+				className="content break-out"
 				variants={slideIn}
 				initial="offscreen"
 				whileInView="onscreen"
@@ -134,15 +153,15 @@ const Contact = () => {
 					/>
 					<Marker position={position} icon={mapPin}>
 						<Popup>
-							<h5>Main Office</h5>
-							<p>
-								Mail:
+							<h2>Main Office</h2>
+							<div>
+								Mail :
 								<a href="mailto:archone@mail.com">
 									archone@mail.com
 								</a>
-							</p>
-							<p>Address: 1892 Chenoweth Drive</p>
-							<p>TN Phone: 123-456-3451</p>
+							</div>
+							<div>Address: 1892 Chenoweth Drive</div>
+							<div>TN Phone: 123-456-3451</div>
 						</Popup>
 					</Marker>
 					<Marker position={position1} icon={mapPin}>
@@ -160,6 +179,103 @@ const Contact = () => {
 					</Marker>
 				</MapContainer>
 			</motion.section>
+
+			<section className="content contact-form">
+				<motion.div
+					className="grid two-col split--40"
+					initial={{ opacity: 0, x: 155 }}
+					animate={{ opacity: 1, x: 0 }}
+					transition={{
+						ease: 'easeInOut',
+						duration: 1,
+						delay: 1.5,
+					}}>
+					<div className="col col-1">
+						<div className="heading heading--md">
+							Connect <br />
+							With Us
+						</div>
+					</div>
+					<div className="col col-2">
+						<form
+							onSubmit={handleSubmit(
+								handleRegistration,
+								handleError
+							)}>
+							<div className="form-group">
+								<label>Name</label>
+								<input
+									name="name"
+									type="text"
+									placeholder="Name"
+									aria-invalid={
+										errors.name ? 'true' : 'false'
+									}
+									{...register('name', registerOptions.name)}
+								/>
+								<small className="text-danger">
+									{errors?.name && errors.name.message}
+								</small>
+							</div>
+							<div className="form-group">
+								<label>Email</label>
+								<input
+									type="email"
+									name="email"
+									placeholder="Email"
+									aria-invalid={
+										errors.name ? 'true' : 'false'
+									}
+									{...register(
+										'email',
+										registerOptions.email
+									)}
+								/>
+								<small className="text-danger">
+									{errors?.email && errors.email.message}
+								</small>
+							</div>
+							<div className="form-group">
+								<label>Message</label>
+								<input
+									type="textarea"
+									name="message"
+									placeholder="Message"
+									aria-invalid={
+										errors.name ? 'true' : 'false'
+									}
+									{...register(
+										'message',
+										registerOptions.message
+									)}
+								/>
+								<small className="text-danger">
+									{errors?.message && errors.message.message}
+								</small>
+							</div>
+							<button aria-label="Submit">
+								<svg
+									width="26"
+									height="20"
+									viewBox="0 0 26 20"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M15 1L24 10L15 19"
+										stroke="white"
+										strokeWidth="2"
+									/>
+									<path
+										d="M0 10H24"
+										stroke="white"
+										strokeWidth="2"
+									/>
+								</svg>
+							</button>
+						</form>
+					</div>
+				</motion.div>
+			</section>
 		</main>
 	);
 };

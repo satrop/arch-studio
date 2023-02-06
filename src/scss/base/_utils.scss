@@ -21,6 +21,10 @@ $breakpoints: (
 	display: flex;
 }
 
+.space-between {
+	justify-content: space-between;
+}
+
 .align-center {
 	align-items: center;
 }
@@ -34,4 +38,77 @@ $breakpoints: (
 	img {
 		filter: brightness(60%);
 	}
+}
+
+// Grid set up
+.grid {
+	display: grid;
+}
+
+.two-col {
+	grid-template-areas:
+		'col-1'
+		'col-2';
+
+	@include breakpoint(lg) {
+		grid-template-areas: 'col-1 col-2';
+
+		&.split {
+			grid-template-columns: 1fr 1fr;
+
+			&--20 {
+				grid-template-columns: 20% 1fr;
+			}
+
+			&--30 {
+				grid-template-columns: 30% 1fr;
+			}
+
+			&--40 {
+				grid-template-columns: 40% 1fr;
+			}
+
+			&--50 {
+				grid-template-columns: 1fr 1fr;
+			}
+
+			&--60 {
+				grid-template-columns: 60% 1fr;
+			}
+
+			&--70 {
+				grid-template-columns: 70% 1fr;
+			}
+
+			&--80 {
+				grid-template-columns: 80% 1fr;
+			}
+		}
+	}
+}
+
+.col-1 {
+	grid-area: col-1;
+}
+
+.col-2 {
+	grid-area: col-2;
+}
+
+// Upper line for some heading
+.upper-line {
+	position: relative;
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 65px;
+		height: 1px;
+		background-color: var(--clr-p-400);
+	}
+}
+
+.spacers {
+	padding-top: 4.563rem;
 }
