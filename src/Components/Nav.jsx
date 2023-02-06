@@ -93,9 +93,16 @@ const Nav = () => {
 						</li>
 						<li>
 							<NavLink
+								to="/portfolio"
+								onClick={() => (menuOpen ? close() : open())}>
+								Portfolio
+							</NavLink>
+						</li>
+						<li>
+							<NavLink
 								to="/about"
 								onClick={() => (menuOpen ? close() : open())}>
-								About
+								About Us
 							</NavLink>
 						</li>
 						<li>
@@ -105,13 +112,7 @@ const Nav = () => {
 								Contact
 							</NavLink>
 						</li>
-						<li>
-							<NavLink
-								to="/portfolio"
-								onClick={() => (menuOpen ? close() : open())}>
-								Portfolio
-							</NavLink>
-						</li>
+						
 					</motion.ul>
 				)}
 			</AnimatePresence>
