@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, A11y, Parallax, EffectFade } from 'swiper';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 
 import data from '/src/assets/data.json';
 import Button from '../Components/Button';
@@ -55,7 +55,7 @@ export default () => {
 	};
 
 	return (
-		<motion.div
+		<div
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{
@@ -76,7 +76,7 @@ export default () => {
 				className="homepage-swiper">
 				{swiperList}
 			</Swiper>
-			<motion.div
+			<div
 				initial={{ opacity: 0, x: -50 }}
 				animate={{ opacity: 1, x: 0 }}
 				transition={{
@@ -84,7 +84,7 @@ export default () => {
 					duration: 1,
 					delay: 1,
 				}}
-				className="home-pagination"></motion.div>
-		</motion.div>
+				className="home-pagination"></div>
+		</div>
 	);
 };

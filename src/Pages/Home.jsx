@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 
 import Button from '../Components/Button';
 
@@ -75,7 +75,7 @@ const Home = () => {
 
 		// Return the item as an DOM element that pulls in the itemImage from above
 		return (
-			<motion.div
+			<div
 				key={item.id}
 				variants={featuredContainerItem}
 				className="portfolio-item">
@@ -87,7 +87,7 @@ const Home = () => {
 					<div className="number">{item.id}</div>
 				</div>
 				{itemImage}
-			</motion.div>
+			</div>
 		);
 	});
 
@@ -97,7 +97,7 @@ const Home = () => {
 				<h1 className="page-header">Home</h1>
 			</div>
 			<div className="mobile-hero">
-				<motion.div
+				<div
 					initial={{ opacity: 0, x: 25 }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{
@@ -106,8 +106,8 @@ const Home = () => {
 					}}
 					className="mobile-hero__image image-shade">
 					<img src={hero} alt="Home page hero image" />
-				</motion.div>
-				<motion.div
+				</div>
+				<div
 					initial={{ opacity: 0, y: -25 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{
@@ -124,13 +124,13 @@ const Home = () => {
 						architecture.
 					</p>
 					<Button goto="/" children="See Our Portfolio" classMod="" />
-				</motion.div>
+				</div>
 			</div>
 			<div className="desktop-hero">
 				<Swiper />
 			</div>
 			<section className="content body-text">
-				<motion.img
+				<img
 					initial={{ opacity: 0, x: 50 }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ ease: 'easeInOut', duration: 1, delay: 1 }}
@@ -138,7 +138,7 @@ const Home = () => {
 					alt=""
 					role="presentation"
 				/>
-				<motion.div
+				<div
 					initial={{ opacity: 0, x: -50 }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{
@@ -148,8 +148,8 @@ const Home = () => {
 					}}
 					className="heading heading--xl wrapping">
 					Welcome
-				</motion.div>
-				<motion.div
+				</div>
+				<div
 					initial={{ opacity: 0, y: 50 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ ease: 'easeInOut', duration: 1, delay: 1.25 }}
@@ -174,9 +174,9 @@ const Home = () => {
 						in harmony the surrounding area to create truly stunning
 						projects that will stand the test of time.
 					</p>
-				</motion.div>
+				</div>
 			</section>
-			<motion.section
+			<section
 				variants={ctaItem}
 				initial="offscreen"
 				whileInView="onscreen"
@@ -191,17 +191,17 @@ const Home = () => {
 					</div>
 					<Button goto="/about" children="About Us" classMod="" />
 				</div>
-			</motion.section>
+			</section>
 			<section className="content portfolio-section">
 				<div className="heading heading--md">Featured</div>
-				<motion.div
+				<div
 					className="portfolio-items"
 					initial="offscreen"
 					whileInView="onscreen"
 					viewport={{ once: true }}
 					transition={{ delayChildren: 0.3, staggerChildren: 0.3 }}>
 					{portfolioItems}
-				</motion.div>
+				</div>
 				<Button
 					to="/portfolio"
 					children="See Our Portfolio"
