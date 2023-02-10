@@ -4,7 +4,7 @@
 
 -   [Live Site](https://satrop.github.io/arch-studio/#/)
 
-![](./arch.png)
+![](arch.png)
 
 ## My process
 
