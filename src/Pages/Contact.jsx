@@ -29,7 +29,7 @@ const Contact = () => {
 	const position1 = [34.72480697647036, -92.27110715246552];
 
 	const mapPin = new L.Icon({
-		iconUrl: '/assets/mapPin.png',
+		iconUrl: '/mapPin.png',
 		iconSize: [40, 49],
 	});
 
