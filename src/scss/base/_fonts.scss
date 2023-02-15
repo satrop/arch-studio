@@ -31,6 +31,16 @@ section {
 	}
 }
 
+.home {
+	.body-text {
+		padding-bottom: 4.25rem;
+
+		@include u.breakpoint(md) {
+			padding-bottom: 0;
+		}
+	}
+}
+
 .heading {
 	font-weight: 700;
 	color: var(--clr-p-100);
