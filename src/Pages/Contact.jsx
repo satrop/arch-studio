@@ -12,6 +12,8 @@ import heroImgSM from '/assets/contact/mobile/image-hero.jpg';
 import 'leaflet/dist/leaflet.css';
 import '../scss/Pages/Contact.scss';
 
+import pin from '/assets/mapPin.png';
+
 const Contact = () => {
 	// Class name to body tag for future SCSS hooks
 	useEffect(() => {
@@ -29,7 +31,7 @@ const Contact = () => {
 	const position1 = [34.72480697647036, -92.27110715246552];
 
 	const mapPin = new L.Icon({
-		iconUrl: '/mapPin.png',
+		iconUrl: `${pin}`,
 		iconSize: [40, 49],
 	});
 
